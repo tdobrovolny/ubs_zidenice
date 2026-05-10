@@ -22,3 +22,10 @@ dnf5 install -y duplicity htop iotop mc ncdu ceph-common
 #### Example for enabling a System Unit File
 
 # systemctl enable podman.socket
+
+# tweak os-release
+ts="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+sed -i "/^PRETTY_NAME=/s/\"$/ Zidenice ${ts}\"/" /usr/lib/os-release
+sed -i '/^VARIANT_ID/s/$/_zidenice/' /usr/lib/os-release
+sed -i "/^VARIANT=/s/\"$/ Zidenice ${ts}\"/" /usr/lib/os-release
+sed -i "/^VERSION=/s/\"$/ Zidenice ${ts}\"/" /usr/lib/os-release
